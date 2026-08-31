@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oral Studio Medellín • Odontología Estética 3D & Dr. José Fernando Espitia</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Navigation Header -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-logo">💎 ORAL STUDIO</span>
+        <span class="brand-sub">Dr. José Fernando Espitia • Ciudad del Río / El Poblado</span>
+      </div>
+      <nav class="nav-links-menu">
+        <a href="#tecnologia" class="nav-link-item">Tecnología 3D</a>
+        <a href="#especialidades" class="nav-link-item">Carillas & Implantes</a>
+        <a href="#calculadora" class="nav-link-item">Cotizador DSD</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="pbx-badge">📞 WhatsApp: (+57) 312 709 3687</span>
+        <button class="btn-admin" onclick="openAdminModal()">📋 Pacientes VIP (<span id="lead-count-badge">0</span>)</button>
+        <!-- Clinic Switcher -->
+        <div class="clinic-switcher-dropdown">
+          <button class="btn-switch-hub">🌐 Red Medellín ▾</button>
+          <div class="switcher-menu">
+            <a href="http://localhost:3000">1. Smile in Medellín (3000)</a>
+            <a href="http://localhost:3001">2. Sonría Clínicas #262 (3001)</a>
+            <a href="http://localhost:3002">3. Clínica Ártica (3002)</a>
+            <a href="http://localhost:3003">4. Dental Home (3003)</a>
+            <a href="http://localhost:3004">5. Marlon Becerra (3004)</a>
+            <a href="http://localhost:3005">6. Col. de Implantes (3005)</a>
+            <a href="http://localhost:3006" class="active-clinic">7. Oral Studio (3006)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <!-- Left Column: Copy & Bento Calculators -->
+      <div class="hero-left">
+        <div class="hero-pill-badge">
+          <span class="pulse-dot"></span>
+          <span>💎 Más de 20 Años Transformando Sonrisas • Ciudad del Río, Medellín</span>
+        </div>
+        <h1 class="hero-headline">
+          Diseño de Sonrisa 3D Digital & <span class="text-gradient-teal">Estética Dental de Clase Mundial.</span>
+        </h1>
+        <p class="hero-subhead">
+          En <strong>Oral Studio Medellín</strong>, bajo la dirección del <strong>Dr. José Fernando Espitia</strong>, creamos sonrisas armoniosas y duraderas con tecnología 3D, carillas en porcelana E-Max hechas a medida en nuestro laboratorio CAD/CAM e implantes de carga inmediata.
+        </p>
+
+        <!-- Facilities & Tech Bento -->
+        <div class="bento-card tech-card" id="tecnologia">
+          <div class="bento-title-row">
+            <h3>🏥 Sede Médica Ciudad del Río (Torre Salud y Servicios)</h3>
+            <span class="badge-exp">20+ Años de Experiencia</span>
+          </div>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <strong>🔬 Escaneo Intraoral 3D</strong>
+              <p>Modelado digital de tus dientes en segundos sin pastas incómodas.</p>
+            </div>
+            <div class="tech-item">
+              <strong>⚡ Laboratorio CAD/CAM Propio</strong>
+              <p>Diseño y fresado robótico de carillas y coronas en solo 5 días hábiles.</p>
+            </div>
+            <div class="tech-item">
+              <strong>📍 Consultorio 2001</strong>
+              <p>Cl. 19A # 44-25, frente a la Clínica del Prado, Sector Poblado.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Treatment Calculator Bento -->
+        <div class="bento-card calc-card" id="calculadora">
+          <div class="bento-title-row">
+            <h3>💰 Cotizador Digital Smile Design (USD & COP)</h3>
+            <span class="badge-savings">Ahorro Internacional 75%</span>
+          </div>
+          <div class="calc-grid">
+            <div class="form-group">
+              <label>Tratamiento Estético o Quirúrgico</label>
+              <select id="calc-treatment" onchange="runCalculator()">
+                <option value="emax_veneers">Carillas en Porcelana E-Max ($350 USD c/u)</option>
+                <option value="composite_veneers">Carillas en Resina de Alta Estética ($180 USD c/u)</option>
+                <option value="implant_crown">Implante Dental de Titanio + Corona ($950 USD)</option>
+                <option value="all_on_4">Rehabilitación Total Fija All-on-4 ($3.800 USD)</option>
+                <option value="whitening">Blanqueamiento Dental Láser ($250 USD)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Cantidad de Dientes / Unidades</label>
+              <input type="number" id="calc-qty" value="8" min="1" max="20" oninput="runCalculator()">
+            </div>
+          </div>
+          <div class="calc-results">
+            <div class="res-row">
+              <span>Inversión en Oral Studio (Medellín):</span>
+              <strong id="res-total-usd" class="highlight-teal">$2,800 USD (~$11.760.000 COP)</strong>
+            </div>
+            <div class="res-row compare-row">
+              <span>Costo Estimado en EE.UU. / Canadá:</span>
+              <del id="res-us-cost" class="text-muted">$16,000 USD</del>
+              <span class="savings-pill" id="res-savings">¡Ahorras $13,200 USD (82%)!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Consultation Scenarios -->
+        <div class="quick-scenarios">
+          <span class="scenarios-title">⚡ Consultas Rápidas:</span>
+          <button class="scenario-btn" onclick="sendQuickMessage('Quiero agendar valoración para 8 carillas en porcelana E-Max')">✨ 8 Carillas E-Max</button>
+          <button class="scenario-btn" onclick="sendQuickMessage('I am traveling from the US for dental tourism. How many days do I need?')">✈️ US Dental Tourism</button>
+          <button class="scenario-btn" onclick="sendQuickMessage('Deseo información sobre implantes dentales con carga inmediata')">🦷 Implantes Carga Inmediata</button>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Phone Simulator with Carolina -->
+      <div class="hero-right">
+        <div class="phone-spotlight-oral">
+          <div class="phone-header-pill">
+            <span class="live-dot-teal"></span>
+            <span>Carolina • Coordinadora de Pacientes</span>
+          </div>
+
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <header class="chat-header">
+              <div class="chat-avatar">
+                <span class="avatar-badge">👩‍⚕️</span>
+              </div>
+              <div class="chat-meta">
+                <div class="chat-title">Carolina • Oral Studio <span class="verified-check">✓</span></div>
+                <div class="chat-subtitle">Ciudad del Río, Poblado • En Línea</div>
+              </div>
+              <div class="chat-header-actions">
+                <span style="font-size:16px;">💎</span>
+              </div>
+            </header>
+
+            <div class="chat-stream" id="chat-stream">
+              <div class="date-badge">Hoy</div>
+              <div class="msg incoming">
+                <div class="bubble">
+                  <p>¡Hola! Bienvenido a <strong>Oral Studio Medellín</strong> 💎✨</p>
+                  <p>Le habla <strong>Carolina</strong>, coordinadora clínica del <strong>Dr. José Fernando Espitia</strong>. Llevamos más de 20 años transformando sonrisas con tecnología 3D y laboratorio CAD/CAM propio en Ciudad del Río / El Poblado.</p>
+                  <p>¿En qué tratamiento está interesado o le gustaría agendar una valoración digital con simulación 3D?</p>
+                  <span class="msg-time">09:00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="typing-notice" id="typing-notice" style="display:none;">
+              Carolina está escribiendo<span>.</span><span>.</span><span>.</span>
+            </div>
+
+            <div class="voice-indicator" id="voice-indicator" style="display: none;">
+              🎙️ <span id="voice-status-text">Carolina está hablando (Voz Neuronal Salomé / Jenny)...</span>
+              <div class="sound-wave"><span></span><span></span><span></span><span></span></div>
+            </div>
+
+            <footer class="chat-input-bar">
+              <input type="text" id="user-input" placeholder="Pregúntele a Carolina o pida una cotización..." autocomplete="off">
+              <button id="voice-mic-btn" class="mic-btn" onclick="toggleVoiceInput()" title="Hablar por micrófono">🎙️</button>
+              <button id="send-btn" class="btn-send" onclick="submitMessage()">Enviar</button>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Especialidades & Dr. José Fernando Espitia -->
+  <section class="section-container" id="especialidades">
+    <div class="section-header">
+      <span class="section-kicker">MÁS DE 20 AÑOS DE TRAYECTORIA CLÍNICA</span>
+      <h2>Tratamientos de Alta Gama en Oral Studio</h2>
+      <p>Bajo la dirección del Dr. José Fernando Espitia en la Torre Salud y Servicios de Ciudad del Río:</p>
+    </div>
+
+    <div class="specialties-grid">
+      <div class="specialty-card">
+        <div class="specialty-icon">💎</div>
+        <h4>Carillas en Porcelana E-Max</h4>
+        <p>Láminas cerámicas ultrafinas elaboradas con tecnología CAD/CAM que corrigen color, forma y posición con máxima naturalidad.</p>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-icon">🔬</div>
+        <h4>Diseño de Sonrisa 3D (DSD)</h4>
+        <p>Visualiza en pantalla el resultado exacto de tu nueva sonrisa antes de iniciar, adaptado a tus rasgos faciales y armonía labial.</p>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-icon">⚡</div>
+        <h4>Implantes de Carga Inmediata</h4>
+        <p>Recupera piezas dentales perdidas en tiempo récord mediante cirugía guiada digital y coronas fijas el mismo día.</p>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-icon">✈️</div>
+        <h4>Turismo Dental VIP</h4>
+        <p>Atención preferencial para pacientes de EE.UU., Canadá y Europa con transporte desde el aeropuerto MDE y protocolos en 5 días.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal: Admin CRM -->
+  <div id="admin-modal" class="modal-backdrop" style="display:none;">
+    <div class="modal-dialog admin-dialog">
+      <div class="modal-head">
+        <h3>📋 Registro de Pacientes VIP • Oral Studio Medellín</h3>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <a href="/api/admin/export-csv" class="btn-csv" download>📥 Exportar CSV</a>
+          <button class="btn-close" onclick="closeAdminModal()">&times;</button>
+        </div>
+      </div>
+      <div class="admin-stats">
+        <div class="stat-card">
+          <span class="stat-lbl">Pacientes Registrados</span>
+          <span class="stat-val" id="stat-leads-count">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-lbl">Pipeline Estimado (USD)</span>
+          <span class="stat-val highlight-teal" id="stat-leads-val">$0 USD</span>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Fecha</th>
+              <th>Paciente</th>
+              <th>WhatsApp</th>
+              <th>Origen</th>
+              <th>Tratamiento</th>
+              <th>Fechas</th>
+              <th>Presupuesto (USD)</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="leads-tbody">
+            <tr><td colspan="9" style="text-align:center;">Cargando registros de pacientes...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>© 2026 Oral Studio Medellín • Dr. José Fernando Espitia • Cl. 19A # 44-25, Torre Salud y Servicios, Consultorio 2001, Ciudad del Río • WhatsApp: (+57) 312 709 3687</p>
+      <button class="btn-reset-text" onclick="resetChat()">Reiniciar Conversación</button>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

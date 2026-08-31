@@ -1,0 +1,14 @@
+{
+  "name": "oral-studio-medellin",
+  "version": "1.0.0",
+  "description": "Oral Studio Medellin - Dr. Jose Fernando Espitia - Dental Tourism & Digital Smile Design",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "npx playwright test"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
